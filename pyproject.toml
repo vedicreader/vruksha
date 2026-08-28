@@ -1,0 +1,47 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "vruksha"
+dynamic = ["version"]
+description = "an entity graph over a litesearch store: extraction, resolution, and a PageRank search leg"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "Apache-2.0"}
+authors = [{name = "Karthik", email = "karthik.rajgopal@hotmail.com"}]
+keywords = ['nbdev', 'knowledge graph', 'entity resolution', 'pagerank', 'search', 'sqlite']
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: Apache Software License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Topic :: Text Processing :: Indexing",
+]
+dependencies = [
+    "fastcore>=2.2.15",
+    "litesearch>=0.1.33",
+    "yake>=0.7.3",
+]
+
+[project.urls]
+Repository = "https://github.com/vedicreader/vruksha"
+Documentation = "https://vedicreader.github.io/vruksha/"
+
+[project.entry-points.nbdev]
+vruksha = "vruksha._modidx:d"
+
+[tool.nbdev]
+
+[tool.hatch.build.targets.wheel]
+packages = ["vruksha"]
+
+[tool.hatch.build.targets.sdist]
+include = ["/vruksha", "/README.md", "/pyproject.toml"]
+
+[tool.hatch.version]
+path = "vruksha/__init__.py"
+
+[dependency-groups]
+dev = ["ipykernel>=7.3.0", "nbdev>=3.3.4", "notebook>=7.6.1"]

@@ -1,0 +1,14 @@
+project:
+  output-dir: _docs
+
+website:
+  title: "varga"
+  site-url: "https://vedicreader.github.io/varga"
+  description: "what kind of thing a document is, and the fields it holds: cue-scored doctypes and schema-constrained extraction"
+  repo-branch: main
+  repo-url: "https://github.com/vedicreader/varga"
+
+format-links:
+  - html
+  - format: commonmark
+    text: Markdown
