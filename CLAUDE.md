@@ -6,7 +6,8 @@ run `nbdev_export`, never edit the `.py`. `README.md` comes from `nbs/index.ipyn
 
 ## Dependency direction
 
-vruksha imports litesearch. Never the reverse: a vruksha import inside litesearch is a cycle.
+vruksha imports litesearch. Never the reverse, in code or in `pyproject.toml`: litesearch
+naming vruksha in any dependency group, dev included, is a cycle.
 litesearch owns the entity, mention and edge tables; vruksha owns the algorithms over them.
 
 ## Three modules, in order
