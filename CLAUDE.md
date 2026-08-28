@@ -1,31 +1,23 @@
 # Working in this repo
 
 nbdev. The notebooks under `nbs/` are the source; `vruksha/*.py` is generated. Edit the notebook,
-run `nbdev_export`, never edit the `.py`. CI runs `nbdev_export` and fails on a diff.
+run `nbdev_export`, never edit the `.py`. `README.md` comes from `nbs/index.ipynb` through
+`nbdev_readme`. CI runs `nbdev_export` and fails on a diff.
 
-## The line with litesearch
+## Dependency direction
 
-litesearch owns the tables. `get_graph` creates entities, mentions and edges, and it lives in
-`litesearch.topics` because `topic_nodes` writes to them too. vruksha owns the algorithms over
-those tables.
+vruksha imports litesearch. Never the reverse: a vruksha import inside litesearch is a cycle.
+litesearch owns the entity, mention and edge tables; vruksha owns the algorithms over them.
 
-vruksha depends on litesearch, never the reverse. `Database.context(graph=True)` is litesearch's
-seam and raises `ImportError` naming this package when it is not installed.
+## Three modules, in order
 
-## Three modules, in dependency order
+`entities` extracts and normalises. `build` builds and resolves. `search` walks and fuses.
+`build` imports from `entities`, `search` imports from `build`. Keep that order.
 
-`entities` extracts and normalises. `build` builds and resolves. `search` walks and fuses. Keep
-that order: `build` imports from `entities`, `search` imports from `build`.
+## The graph leg loses on some corpora
 
-## The graph leg is measured, and it loses on some corpora
-
-`graph_w` defaults to 0.5 and `graph=` is off. The numbers are in the README and in litesearch's
-`evals/RESULTS.md`. Do not turn it on by default without a new measurement.
-
-## What must not be re-added
-
-`hash_embed` is `litesearch.utils`. `rrf_all` is `litesearch.core`. `topic_nodes`, `clusters` and
-`peers` are `litesearch.topics`. Copying any of them here restarts the fork this split ended.
+`graph_w` defaults to 0.5 and `graph_search` is opt-in by name. The numbers are in the README.
+Do not turn it on by default without a new measurement.
 
 ## Prose in notebooks
 
