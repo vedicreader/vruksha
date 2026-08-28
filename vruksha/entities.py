@@ -12,7 +12,7 @@ from fastcore.parallel import ProcessPoolExecutor
 from fastlite import Database
 from apswutils.db import Table
 from multiprocessing import get_context
-from litesearch.core import (_in, _rid, _slug, _np_dtype, process_content, write_txn, db_lock,
+from litesearch.core import (sql_in, rowid_sel, content_id, NP_DTYPE, process_content, write_txn, db_lock,
                              upsert_all, rrf_all)
 from litesearch.topics import get_graph
 from litesearch.utils import hash_embed

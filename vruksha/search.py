@@ -12,7 +12,7 @@ from fastcore.parallel import ProcessPoolExecutor
 from fastlite import Database
 from apswutils.db import Table
 from multiprocessing import get_context
-from litesearch.core import (_in, _rid, _slug, _np_dtype, process_content, write_txn, db_lock,
+from litesearch.core import (sql_in, rowid_sel, content_id, NP_DTYPE, process_content, write_txn, db_lock,
                              upsert_all, rrf_all)
 from litesearch.topics import get_graph
 from litesearch.utils import hash_embed
@@ -33,7 +33,7 @@ def _adjacency(g, nodes, hops=2, max_nodes=4000):
         rows = []
         for b in chunked(fl, 400):
             rows += con.execute(f"select src, dst, weight from {tbl} "
-                                f"where {_in('src', b)} OR {_in('dst', b)}").fetchall()
+                                f"where {sql_in('src', b)} OR {sql_in('dst', b)}").fetchall()
         nxt = set()
         for s, d, w in rows:
             w = w or 1.0
@@ -96,7 +96,7 @@ def _canon_mentions(g,                # graph tables from `get_graph`
           f'select m.chunk_id, m.entity_id from {mn} m'
     out = []
     for b in chunked(vals, batch):
-        out += con.execute(f"{sel} where {_in('m.'+col, b)}").fetchall()
+        out += con.execute(f"{sel} where {sql_in('m.'+col, b)}").fetchall()
     return out
 
 # %% ../nbs/02_search.ipynb #fba9515fca9c5b56
@@ -117,8 +117,8 @@ def _leg(db, g, seeds_from, cols, table_name, limit, hops, damping, iters, use_c
         inv[cid] = inv.get(cid, 0.0) + mass.get(e, 0.0)
     if not inv: return []
     ranked = sorted(inv.items(), key=lambda kv: -kv[1])[:limit*3]
-    sel = ','.join([_rid() if c == 'rowid' else c for c in cols])
-    rows = {r['id']: r for r in db.t[table_name](select=sel, where=_in('id', [c for c, _ in ranked]))}
+    sel = ','.join([rowid_sel() if c == 'rowid' else c for c in cols])
+    rows = {r['id']: r for r in db.t[table_name](select=sel, where=sql_in('id', [c for c, _ in ranked]))}
     return [rows[c] for c, _ in ranked if c in rows]
 
 @patch

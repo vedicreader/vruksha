@@ -12,7 +12,7 @@ from fastcore.parallel import ProcessPoolExecutor
 from fastlite import Database
 from apswutils.db import Table
 from multiprocessing import get_context
-from litesearch.core import (_in, _rid, _slug, _np_dtype, process_content, write_txn, db_lock,
+from litesearch.core import (sql_in, rowid_sel, content_id, NP_DTYPE, process_content, write_txn, db_lock,
                              upsert_all, rrf_all)
 from litesearch.topics import get_graph
 from litesearch.utils import hash_embed
@@ -188,7 +188,7 @@ def build_graph(db,                  # Database with a chunk store
         'Register an entity by canonical name, returning its hash id.'
         n = _norm(name)
         if not n: return None
-        i = _slug(n)
+        i = content_id(n)
         e = ents.setdefault(i, dict(content=n, kind=kind, freq=0, canon=i))
         e['freq'] += 1
         return i
@@ -243,7 +243,7 @@ def build_graph(db,                  # Database with a chunk store
         for c in ([chunks] if isinstance(chunks, dict) else chunks):
             txt = c.get('content')
             if not (txt and txt.strip()): continue
-            cid = c.get('id') or _slug(txt)
+            cid = c.get('id') or content_id(txt)
             if code and _is_code(c):
                 dname, calls, imps = code_entities(c)
                 did = ent(dname, 'symbol') if dname else None
@@ -317,7 +317,7 @@ def _ann_pairs(tbl, rows, k=8, dtype=np.float16):
     idx_ = tbl.db.get_index(tbl.name)
     emb = [r for r in rows if r['embedding']]
     if not emb or not idx_.size: return
-    key = {r['rowid']: r for r in tbl.db.q(f'select {_rid()}, id, content from {tbl.name}')}
+    key = {r['rowid']: r for r in tbl.db.q(f'select {rowid_sel()}, id, content from {tbl.name}')}
     res = idx_.search(np.stack([np.frombuffer(r['embedding'], dtype=dtype) for r in emb]),
                       count=min(k, idx_.size))
     ks, ds = np.atleast_2d(res.keys), np.atleast_2d(res.distances)
@@ -363,7 +363,7 @@ def resolve_entities(db,                # Database
                      dtype=np.float16):
     'Merge near-duplicate entities: ANN + shared-token candidates, both gated by the lexical guard.'
     g = db.get_graph(store, prefix)
-    allr = L(g.entities(select=f'{_rid()}, id, content, freq, embedding, kind, canon'))
+    allr = L(g.entities(select=f'{rowid_sel()}, id, content, freq, embedding, kind, canon'))
     rows = allr.filter(lambda r: r['kind'] not in set(skip_kinds or ()))
     if len(rows) < 2:
         return dict(merged=0, by_ann=0, by_lexical=0, edges=len(list(g.edges())),
