@@ -1498,39 +1498,23 @@ wheels = [
 ]
 
 [[package]]
-name = "liteparse"
-version = "2.14.2"
-source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/39/e3/41eb99ac6095ec83eea806b469a4c14f8b5d349934cd9f910ca1c07d4806/liteparse-2.14.2.tar.gz", hash = "sha256:45919c17881686f884deb12fa7da58f9ff2a6eedb968f05ab952e9d350f61487", size = 501960, upload-time = "2026-08-27T23:06:47.349Z" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/5d/ca/a236518d61a0eb4f077b63bd860c16eaf1f3e3c2f7e62ed22213e9de4e30/liteparse-2.14.2-cp310-abi3-macosx_10_12_x86_64.whl", hash = "sha256:a5111bbc46d886e49481991020c5b56d761985c0b5314ccc114884da18f910d1", size = 12615046, upload-time = "2026-08-27T23:06:31.999Z" },
-    { url = "https://files.pythonhosted.org/packages/00/87/0fc156265fc081f12e8fa868ce8c7bbda4db9d550ff78c89527db9530382/liteparse-2.14.2-cp310-abi3-macosx_11_0_arm64.whl", hash = "sha256:da6e243a33fab5a36520c77295435d3798c3bfb7e95b76e3a0d7b9034a8eae09", size = 12021272, upload-time = "2026-08-27T23:06:34.407Z" },
-    { url = "https://files.pythonhosted.org/packages/73/ea/4f18d6484402f46ef89eea3afd05803398ee02b910b54a43b70e8c13d26c/liteparse-2.14.2-cp310-abi3-manylinux_2_28_aarch64.whl", hash = "sha256:d436d0ea41568ce1f3f2ae7cbc4491f4f5ec11b7f3a27575d590bcc3cbfd5a8e", size = 13534636, upload-time = "2026-08-27T23:06:36.5Z" },
-    { url = "https://files.pythonhosted.org/packages/9d/f6/e25cec04d1764d9f1b3f5df0c8d96f8c616cd260ac9d4609764d9e4abbe6/liteparse-2.14.2-cp310-abi3-manylinux_2_28_x86_64.whl", hash = "sha256:daf015d1d8288ac2e3f0ea163feec44d3e54b6270c2f527effeb1fe79fa610d8", size = 13826698, upload-time = "2026-08-27T23:06:38.588Z" },
-    { url = "https://files.pythonhosted.org/packages/c8/ef/1d559d64dcbb010d76d3891ca71d91dea050bcd967d740a379f52d9d0a81/liteparse-2.14.2-cp310-abi3-musllinux_1_2_x86_64.whl", hash = "sha256:b5708962350dc6269c00f4187005b98a27e135f258d5bfbe56ac166f8705ff1e", size = 17011771, upload-time = "2026-08-27T23:06:40.722Z" },
-    { url = "https://files.pythonhosted.org/packages/91/f1/6f6f0c36996297106be36482cc7f04a64e3b1115c7552cea5e28b78a77e7/liteparse-2.14.2-cp310-abi3-win_amd64.whl", hash = "sha256:2838c5efe04aeaba66ecadf4b4f1effbd1cb9f761091f9b42f3dd5a193751ce7", size = 12038807, upload-time = "2026-08-27T23:06:43.567Z" },
-    { url = "https://files.pythonhosted.org/packages/df/d4/fd6ec74ded9913b7e7c79dbdc5aad6336149abc1c78e7206820f745bcf39/liteparse-2.14.2-cp310-abi3-win_arm64.whl", hash = "sha256:8926ae8d5474c45c05988a396d5b10cbfc385ea4df4aa5dd96ea76cf25f8242c", size = 11353446, upload-time = "2026-08-27T23:06:45.585Z" },
-]
-
-[[package]]
 name = "litesearch"
-version = "0.1.33"
+version = "0.1.34"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "chonkie" },
     { name = "codesigs" },
     { name = "fastlite" },
-    { name = "liteparse" },
     { name = "model2vec" },
     { name = "pdf-oxide" },
+    { name = "pdflite" },
     { name = "pillow" },
     { name = "tokenizers" },
     { name = "usearch" },
-    { name = "yake" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/01/11/9394ab6f48bd9e6b3070707540048c1356e611c1139660d998b5f684c259/litesearch-0.1.33.tar.gz", hash = "sha256:baeedc0a2ca0955c251b0575f859773edfb2376d38afaaa2e3a6fa1def6f4cbc", size = 101816, upload-time = "2026-08-28T02:35:48.021Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/41/65/80e3b22458778c85e7bdd595c519d21cf3951a8c6ea42bf9fa6d1e96e1df/litesearch-0.1.34.tar.gz", hash = "sha256:4566b0f6a9af51776c139b4eff4d0f78584d8df9901a9961d9d976e633a3f75b", size = 68163, upload-time = "2026-08-29T23:09:25.311Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/32/32/0007dfd9e7c50154e8709fd9f46f8c49aee3a1782e261587e9abb382053c/litesearch-0.1.33-py3-none-any.whl", hash = "sha256:dc7fad149db1c298cde6c89b00a2250d6473a25f09db22da65b4934cb64e089b", size = 107022, upload-time = "2026-08-28T02:35:46.793Z" },
+    { url = "https://files.pythonhosted.org/packages/ec/02/b3ffc5902cce2cf32183151e0254d5e7cfa75fda91c60b9676cb1303006f/litesearch-0.1.34-py3-none-any.whl", hash = "sha256:94e1896f4ab177099f4ac75d3be02ce866b34ec311f657c792fc3da42d01b61f", size = 73596, upload-time = "2026-08-29T23:09:23.923Z" },
 ]
 
 [[package]]
@@ -2182,6 +2166,19 @@ wheels = [
     { url = "https://files.pythonhosted.org/packages/dd/fa/62f22c2c8a1aab2350332e58a95211a54abd6dad341c27bd4a6b36ab1d21/pdf_oxide-0.3.77-cp38-abi3-musllinux_1_2_x86_64.whl", hash = "sha256:dbd98da7ff6265262493f86826c170a457a21649ae40d97ef246e2a4546a0b83", size = 11393364, upload-time = "2026-07-28T07:03:30.977Z" },
     { url = "https://files.pythonhosted.org/packages/9f/b9/6306d435f30a5894d8187221042fbd8a15ab2120edef7841009531a91157/pdf_oxide-0.3.77-cp38-abi3-win_amd64.whl", hash = "sha256:33b35c7e104e828cb7887a6310a02e210cd079821511097f15989500d71f18d9", size = 11275727, upload-time = "2026-07-28T07:03:32.832Z" },
     { url = "https://files.pythonhosted.org/packages/eb/ce/3816c848cad70eeccf6b039d5d27ef14d435678d13ce417b6052df2c7bbc/pdf_oxide-0.3.77-cp38-abi3-win_arm64.whl", hash = "sha256:602ff7bdc45f5fa574d59c673bc7106d4d2d94aae477d906f41b96d1269efd34", size = 10511195, upload-time = "2026-07-28T07:03:34.756Z" },
+]
+
+[[package]]
+name = "pdflite"
+version = "0.0.1"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "fastcore" },
+    { name = "pdf-oxide" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/aa/f2/208acf01a9e3e44f4a81e6dac308a1b52a120f2e2247a1192df4da6fde14/pdflite-0.0.1.tar.gz", hash = "sha256:49aefb491f7aa4088c0cb1746bd5457a97fa5545f1d094495f1d702812a4cfee", size = 8960, upload-time = "2026-08-28T09:48:10.253Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/2a/e0/e91505faafc29025545687859d50fbc9c9ba17aebd2d84c399bbbe1c825c/pdflite-0.0.1-py3-none-any.whl", hash = "sha256:8503971990cb90e7fbf11a0eef98a7f12d161a5d3a3cca72912a6accc57eaeb3", size = 9190, upload-time = "2026-08-28T09:48:09Z" },
 ]
 
 [[package]]

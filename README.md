@@ -24,7 +24,7 @@ db.graph_search('how does resolution work', qemb, graph_w=0.5)
 
 ## The lexical guard
 
-Embedding similarity alone merges `python 3.11` into `python 3.12`. `_lex_ok` requires token
+Embedding similarity alone merges `python 3.11` into `python 3.12`. [`_lex_ok`](https://vedicreader.github.io/vruksha/entities.html#_lex_ok) requires token
 overlap, matching digits and a matching acronym before a merge goes through.
 
 ``` python

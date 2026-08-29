@@ -2,11 +2,11 @@ project:
   output-dir: _docs
 
 website:
-  title: "varga"
-  site-url: "https://vedicreader.github.io/varga"
-  description: "what kind of thing a document is, and the fields it holds: cue-scored doctypes and schema-constrained extraction"
+  title: "vruksha"
+  site-url: "https://vedicreader.github.io/vruksha"
+  description: "an entity graph over a litesearch store: extraction, resolution, and a PageRank search leg"
   repo-branch: main
-  repo-url: "https://github.com/vedicreader/varga"
+  repo-url: "https://github.com/vedicreader/vruksha"
 
 format-links:
   - html

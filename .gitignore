@@ -159,7 +159,6 @@ checklink/cookies.txt
 !nbs/chatcache/cache.db
 nbs/chatcache/*.db-wal
 nbs/chatcache/*.db-shm
-pdfs/
 assets/
 .venv/
 .kosha/
