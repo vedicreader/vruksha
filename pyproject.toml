@@ -5,12 +5,12 @@ build-backend = "hatchling.build"
 [project]
 name = "vruksha"
 dynamic = ["version"]
-description = "an entity graph over a litesearch store: extraction, resolution, and a PageRank search leg"
+description = "a typed entity graph over a litesearch store: LLM extraction, priming, a guarded merge, and a search leg"
 readme = "README.md"
 requires-python = ">=3.10"
 license = {text = "Apache-2.0"}
 authors = [{name = "Karthik", email = "karthik.rajgopal@hotmail.com"}]
-keywords = ['nbdev', 'knowledge graph', 'entity resolution', 'pagerank', 'search', 'sqlite']
+keywords = ['nbdev', 'knowledge graph', 'entity resolution', 'llm', 'search', 'sqlite']
 classifiers = [
     "Development Status :: 4 - Beta",
     "Intended Audience :: Developers",
@@ -22,7 +22,7 @@ classifiers = [
 dependencies = [
     "fastcore>=2.2.15",
     "litesearch>=0.1.33",
-    "yake>=0.7.3",
+    "numpy",
 ]
 
 [project.urls]
