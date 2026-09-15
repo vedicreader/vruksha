@@ -12,13 +12,27 @@ litesearch owns the entity, mention and edge tables; vruksha owns the algorithms
 
 ## Three modules, in order
 
-`entities` extracts and normalises. `build` builds and resolves. `search` walks and fuses.
+`entities` extracts (LLM) and guards merges. `build` writes, primes, embeds and resolves. `search` walks and fuses.
 `build` imports from `entities`, `search` imports from `build`. Keep that order.
 
-## The graph leg loses on some corpora
+## Model-agnostic by injection
 
-`graph_w` defaults to 0.5 and `graph_search` is opt-in by name. The numbers are in the README.
-Do not turn it on by default without a new measurement.
+vruksha names no model. `build_graph` takes `chat` (any `.oneshot(prompt, sp=, max_tokens=)`) and
+`emb_fn` from the caller; rishi/urai/an API client live there, not here. Do not add a model or
+`rishi` to `pyproject.toml`.
+
+## The graph is typed, not co-occurrence
+
+Edges are LLM-extracted relations (`refers_to`, `cites`, `defines`, ...), not PMI. The PMI graph
+measured negative for retrieval; the typed graph reaches cross-reference bridges hybrid cannot.
+Numbers live in litesearch `evals/RESULTS.md`. `graph_search` is opt-in by name; do not wire it
+into a default retrieval path without a new measurement.
+
+## The lexical guard is load-bearing
+
+`resolve_entities` merges duplicate entities, but only pairs that pass `_lex_ok`: token or acronym
+overlap AND identical numbers, so `python 3.11` never eats `3.12`. Priming reduces how much it has
+to do; keep the guard conservative.
 
 ## Prose in notebooks
 
