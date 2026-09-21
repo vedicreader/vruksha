@@ -4,7 +4,7 @@ project:
 website:
   title: "vruksha"
   site-url: "https://vedicreader.github.io/vruksha"
-  description: "an entity graph over a litesearch store: extraction, resolution, and a PageRank search leg"
+  description: "a typed entity graph over a litesearch store: LLM extraction, priming, a guarded merge, and a search leg"
   repo-branch: main
   repo-url: "https://github.com/vedicreader/vruksha"
 
